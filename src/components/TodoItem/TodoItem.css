@@ -22,6 +22,11 @@
 
 .todo-item span.check--active {
   background: url("../../assets/circle-check.svg") no-repeat;
+  text-decoration: line-through;
+}
+
+.todo-item p.check--active {
+  text-decoration: line-through;
 }
 
 .todo-item p {

@@ -1,14 +1,22 @@
+import React from 'react';
 import './CreateTodoButton.css';
 
 function CreateTodoButton() {
+
+  let [state, setState] = React.useState(0);
   
   const createTodo = (e) => {
-    console.log(e.target);
+    setState(++state);
+    console.log(`N: ${state}`);
   };
 
   return (
     <div className="createTodo-container">
-      <button onClick={(event) => createTodo(event)}>+</button>
+      {/* <p>Le diste click {state} veces!</p> */}
+      <button 
+        onClick={
+          (event) => createTodo(event)
+        }>+</button>
     </div>
   );
 }
