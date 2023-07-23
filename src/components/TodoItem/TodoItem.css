@@ -1,0 +1,45 @@
+.todo-item {
+  width: 80%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 4rem;
+  margin: 0.4rem 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.todo-item .check {
+  background: url("../../assets/circle.svg") no-repeat;
+  background-size: 90%;
+  background-position: center center;
+  width: 2.5em;
+  height: 2.5em;
+  border: none;
+  cursor: pointer;
+}
+
+.todo-item span.check--active {
+  background: url("../../assets/circle-check.svg") no-repeat;
+}
+
+.todo-item p {
+  width: 70%;
+}
+
+.todo-item .close-item {
+  background: url("../../assets/x.svg") no-repeat;
+  background-size: 90%;
+  background-position: center center;
+  width: 1.2em;
+  height: 1.2em;
+  border: none;
+  cursor: pointer;
+}
+
+.todo-item .close-item:hover {
+  background: url("../../assets/x-red.svg") no-repeat;
+  background-size: 90%;
+  background-position: center center;
+}

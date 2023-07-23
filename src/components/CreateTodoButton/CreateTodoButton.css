@@ -1,0 +1,22 @@
+.createTodo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    position: absolute;
+    bottom: 0;
+}
+
+.createTodo-container button {
+    width: 100%;
+    height: 4.4rem;
+    font-size: 2.5em;
+    border: none;
+    background-color: #7996f5;
+    cursor: pointer;
+    color: aliceblue;
+}
+
+.createTodo-container button:hover {
+    background-color: #5f7cd9;
+}
