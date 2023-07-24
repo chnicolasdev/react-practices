@@ -16,7 +16,7 @@ function CreateTodoButton() {
       <button 
         onClick={
           (event) => createTodo(event)
-        }>+</button>
+        }><span>+</span></button>
     </div>
   );
 }
