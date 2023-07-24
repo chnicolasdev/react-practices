@@ -36,6 +36,36 @@ function App() {
       return todoText.includes(searchText); // Si el texto incluye lo que estamos buscando
     }
   );
+
+  // Completar
+  const completeTodo = (text) => {
+    const newTodos  = [...todos]; // Se crea una copia del array todos
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text // Filtra el resultado si el text es el mismo (es la key)
+    );
+    // newTodos[todoIndex].completed === true
+    //   ? (newTodos[todoIndex].completed = false)
+    //   : (newTodos[todoIndex].completed = true);
+    if (newTodos[todoIndex].completed === true) {
+      newTodos[todoIndex].completed = false
+      console.log(`Se completa: ${text}`);
+    } else {
+      newTodos[todoIndex].completed = true
+      console.log(`Se retoma: ${text}`);
+    }
+    setTodos(newTodos)
+  }
+
+  // Eliminar
+  const deleteTodo = (text) => {
+    const newTodos  = [...todos]; // Se crea una copia del array todos
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos.splice(todoIndex, 1); // Elimina la posición
+    setTodos(newTodos)
+    console.log(`Se elimina: ${text}`);
+  }
   
   // Input searchValue
   console.log(`Buscar: ${searchValue}`);
@@ -54,6 +84,12 @@ function App() {
             key={todo.text} 
             text={todo.text}
             completed={todo.completed}
+            onComplete={
+              () => completeTodo(todo.text)
+            }
+            onDelete={
+              () => deleteTodo(todo.text)
+            }
           />
         ))}
       </TodoList>
