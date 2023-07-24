@@ -27,6 +27,15 @@ function App() {
 
   // Se cuentan todos los todos que se crearon arriba.
   const totalTodos = todos.length; 
+
+  // Filtrar busqueda de Todo's
+  const searchedTodos = todos.filter( // Se filtra para devolver todas las coincidencias
+    (todo) => { // Por cada todo
+      const todoText    = todo.text.toLowerCase();
+      const searchText  = searchValue.toLowerCase();
+      return todoText.includes(searchText); // Si el texto incluye lo que estamos buscando
+    }
+  );
   
   // Input searchValue
   console.log(`Buscar: ${searchValue}`);
@@ -40,7 +49,7 @@ function App() {
       />
 
       <TodoList>
-        {defaultTodos.map( todo => (
+        {searchedTodos.map( todo => (
           <TodoItem 
             key={todo.text} 
             text={todo.text}
