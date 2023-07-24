@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/react-practices/static/css/main.16448d32.css",
-    "main.js": "/react-practices/static/js/main.4e8a600a.js",
+    "main.css": "/react-practices/static/css/main.39e9723d.css",
+    "main.js": "/react-practices/static/js/main.489f8a5c.js",
     "index.html": "/react-practices/index.html",
     "static/media/x-red.svg": "/react-practices/static/media/x-red.139e2423c0c58fda0a43.svg",
     "static/media/x.svg": "/react-practices/static/media/x.eb0580540d6e03cd2d52.svg",
+    "static/media/search-icon.svg": "/react-practices/static/media/search-icon.e245a22c851131acaf4f364fe4add6a5.svg",
     "static/media/circle-check.svg": "/react-practices/static/media/circle-check.337bb861b9e4211753fb.svg",
     "static/media/circle.svg": "/react-practices/static/media/circle.5022754cfbf199720b9a.svg",
-    "main.16448d32.css.map": "/react-practices/static/css/main.16448d32.css.map",
-    "main.4e8a600a.js.map": "/react-practices/static/js/main.4e8a600a.js.map"
+    "main.39e9723d.css.map": "/react-practices/static/css/main.39e9723d.css.map",
+    "main.489f8a5c.js.map": "/react-practices/static/js/main.489f8a5c.js.map"
   },
   "entrypoints": [
-    "static/css/main.16448d32.css",
-    "static/js/main.4e8a600a.js"
+    "static/css/main.39e9723d.css",
+    "static/js/main.489f8a5c.js"
   ]
 }
