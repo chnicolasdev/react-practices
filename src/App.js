@@ -8,7 +8,7 @@ import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton
 const defaultTodos = [
   { text: 'Cortar cebolla',     completed: true },
   { text: 'Hacer aseo',         completed: true },
-  { text: 'Limpiar ventana',    completed: false },
+  { text: 'Limpiar ventana',    completed: true },
   { text: 'Ir al supermercado', completed: false }
 ];
 
