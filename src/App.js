@@ -12,25 +12,39 @@ import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton
 //   { text: 'Ir al supermercado', completed: false }
 // ];
 
-function App() {
-
+function useLocalStorage(itemName, initialValue) {
+  
+  
   // Se parsea desde localStorage (de string a json)
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
-
-  if (!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+  
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
   } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-
+    parsedItem = JSON.parse(localStorageItem);
   }
+  
+  const [item, setItem] = React.useState(parsedItem);
+
+  // Guardar estado y en localStorage
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+
+}
+
+function App() {
 
   // Estado input search
   const [searchValue, setSearchValue] = React.useState('');
   
   // Estado Listas Todo
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   
   // Se recorren los todos (del defaultTodos) y si tiene completed true, se retorna.
   const completedTodos  = todos.filter(
@@ -48,12 +62,6 @@ function App() {
       return todoText.includes(searchText); // Si el texto incluye lo que estamos buscando
     }
   );
-
-  // Guardar estado y en localStorage
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
 
   // Completar
   const completeTodo = (text) => {
