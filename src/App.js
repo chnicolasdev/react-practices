@@ -5,20 +5,32 @@ import { TodoList } from './components/TodoList/TodoList';
 import { TodoItem } from './components/TodoItem/TodoItem';
 import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton';
 
-const defaultTodos = [
-  { text: 'Cortar cebolla',     completed: true },
-  { text: 'Hacer aseo',         completed: true },
-  { text: 'Limpiar ventana',    completed: true },
-  { text: 'Ir al supermercado', completed: false }
-];
+// const defaultTodos = [
+//   { text: 'Cortar cebolla',     completed: true },
+//   { text: 'Hacer aseo',         completed: true },
+//   { text: 'Limpiar ventana',    completed: true },
+//   { text: 'Ir al supermercado', completed: false }
+// ];
 
 function App() {
+
+  // Se parsea desde localStorage (de string a json)
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  let parsedTodos;
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+
+  }
 
   // Estado input search
   const [searchValue, setSearchValue] = React.useState('');
   
   // Estado Listas Todo
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(parsedTodos);
   
   // Se recorren los todos (del defaultTodos) y si tiene completed true, se retorna.
   const completedTodos  = todos.filter(
@@ -37,6 +49,12 @@ function App() {
     }
   );
 
+  // Guardar estado y en localStorage
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
+
   // Completar
   const completeTodo = (text) => {
     const newTodos  = [...todos]; // Se crea una copia del array todos
@@ -53,7 +71,7 @@ function App() {
       newTodos[todoIndex].completed = true
       console.log(`Se retoma: ${text}`);
     }
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   // Eliminar
@@ -63,7 +81,7 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos.splice(todoIndex, 1); // Elimina la posición
-    setTodos(newTodos)
+    saveTodos(newTodos)
     console.log(`Se elimina: ${text}`);
   }
   
