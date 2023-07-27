@@ -1,9 +1,5 @@
 import React from 'react';
-import { TodoCounter } from '../TodoCounter/TodoCounter';
-import { TodoSearch } from '../TodoSearch/TodoSearch';
-import { TodoList } from '../TodoList/TodoList';
-import { TodoItem } from '../TodoItem/TodoItem';
-import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
+import { AppUI } from './AppUI';
 import { useLocalStorage } from './useLocalStorage';
 
 // const defaultTodos = [
@@ -19,7 +15,12 @@ function App() {
   const [searchValue, setSearchValue] = React.useState('');
   
   // Estado Listas Todo
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos, 
+    saveItem: saveTodos, 
+    loading, 
+    error
+  } = useLocalStorage('TODOS_V1', []);
   
   // Se recorren los todos (del defaultTodos) y si tiene completed true, se retorna.
   const completedTodos  = todos.filter(
@@ -44,9 +45,7 @@ function App() {
     const todoIndex = newTodos.findIndex(
       (todo) => todo.text == text // Filtra el resultado si el text es el mismo (es la key)
     );
-    // newTodos[todoIndex].completed === true
-    //   ? (newTodos[todoIndex].completed = false)
-    //   : (newTodos[todoIndex].completed = true);
+    
     if (newTodos[todoIndex].completed === true) {
       newTodos[todoIndex].completed = false
       console.log(`Se completa: ${text}`);
@@ -69,34 +68,21 @@ function App() {
   }
   
   // Input searchValue
-  console.log(`Buscar: ${searchValue}`);
+  // console.log(`Buscar: ${searchValue}`);
 
   return (
-    <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList>
-        {searchedTodos.map( todo => (
-          <TodoItem 
-            key={todo.text} 
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={
-              () => completeTodo(todo.text)
-            }
-            onDelete={
-              () => deleteTodo(todo.text)
-            }
-          />
-        ))}
-      </TodoList>
-
-      <CreateTodoButton />
-    </>
+    // <h1>Hola</h1>
+    <AppUI
+      loading={loading}
+      error={error}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   );
 }
 
