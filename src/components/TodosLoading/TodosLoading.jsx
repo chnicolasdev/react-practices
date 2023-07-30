@@ -10,16 +10,6 @@ function TodosLoading() {
             <p className="check--active"></p>
             <span className="close-item"></span>
         </div>
-            <div className="todo-item loading">
-            <span className="check--active"></span>
-            <p className="check--active"></p>
-            <span className="close-item"></span>
-        </div>
-        <div className="todo-item loading">
-            <span className="check--active"></span>
-            <p className="check--active"></p>
-            <span className="close-item"></span>
-        </div>
     </>
   );
 }
