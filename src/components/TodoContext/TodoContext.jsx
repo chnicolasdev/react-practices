@@ -5,9 +5,11 @@ const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
 
-  // Estado input search
+  // Estados
   const [searchValue, setSearchValue] = React.useState('');
+  const [openModal, setOpenModal] = React.useState(true);
   
+
   // Estado Listas Todo
   const {
     item: todos, 
@@ -71,7 +73,9 @@ function TodoProvider({ children }) {
             setSearchValue,
             searchedTodos,
             completeTodo,
-            deleteTodo
+            deleteTodo,
+            openModal,
+            setOpenModal
         }}>
             {children}
         </TodoContext.Provider>
