@@ -7,7 +7,7 @@ function TodoProvider({ children }) {
 
   // Estados
   const [searchValue, setSearchValue] = React.useState('');
-  const [openModal, setOpenModal] = React.useState(true);
+  const [openModal, setOpenModal] = React.useState(false);
   
 
   // Estado Listas Todo
