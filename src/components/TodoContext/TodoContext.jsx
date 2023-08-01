@@ -52,6 +52,18 @@ function TodoProvider({ children }) {
     saveTodos(newTodos)
   }
 
+  // Agregar
+  const addTodo = (text) => {
+    const newTodos  = [...todos]; // Se crea una copia del array todos
+    
+    newTodos.push({
+      text,
+      completed: false
+    });
+
+    saveTodos(newTodos)
+  }
+
   // Eliminar
   const deleteTodo = (text) => {
     const newTodos  = [...todos]; // Se crea una copia del array todos
@@ -75,7 +87,8 @@ function TodoProvider({ children }) {
             completeTodo,
             deleteTodo,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
         }}>
             {children}
         </TodoContext.Provider>
